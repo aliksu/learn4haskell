@@ -669,7 +669,10 @@ You need to use recursion in this task. Feel free to return to it later, if you
 aren't ready for this boss yet!
 -}
 firstDigit :: Int -> Int
-firstDigit n = error "firstDigit: Not implemented!"
+firstDigit n = (first n)
+  where
+    first :: Int -> Int
+    first x = if (div x 10) > 0 then first (div x 10) else x
 
 
 {-
