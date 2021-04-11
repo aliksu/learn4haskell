@@ -508,7 +508,6 @@ isThird42 [] = False
 isThird42 [_] = False
 isThird42 [_, _] = False
 isThird42 (_:_:z:_) = z == 42
--- isThird42 lst = head (drop 2 lst) == 42
 
 
 {- |
