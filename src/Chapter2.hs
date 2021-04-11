@@ -740,7 +740,8 @@ value of the element itself
 -}
 smartReplicate :: [Int] -> [Int]
 smartReplicate [] = []
-smartReplicate (x:xs) = replicate x x ++ smartReplicate xs
+smartReplicate lst = concat (map (\x -> replicate x x) lst)
+-- smartReplicate (x:xs) = replicate x x ++ smartReplicate xs
 
 {- |
 =⚔️= Task 9
