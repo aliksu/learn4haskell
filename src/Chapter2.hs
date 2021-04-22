@@ -38,6 +38,8 @@ want some feedback on your solutions.
 Now, if you are ready, bring it on!
 -}
 
+{-# LANGUAGE ScopedTypeVariables #-}
+
 module Chapter2 where
 
 {-
@@ -504,10 +506,8 @@ True
 False
 -}
 isThird42 :: [Int] -> Bool
-isThird42 [] = False
-isThird42 [_] = False
-isThird42 [_, _] = False
-isThird42 (_:_:z:_) = z == 42
+isThird42 (_:_:42:_) = True
+isThird42 _ = False
 
 
 {- |
@@ -738,9 +738,7 @@ value of the element itself
 🕯 HINT: Use combination of 'map' and 'replicate'
 -}
 smartReplicate :: [Int] -> [Int]
-smartReplicate [] = []
-smartReplicate lst = concat (map (\x -> replicate x x) lst)
--- smartReplicate (x:xs) = replicate x x ++ smartReplicate xs
+smartReplicate = concatMap (\x -> replicate x x)
 
 {- |
 =⚔️= Task 9
@@ -754,7 +752,7 @@ the list with only those lists that contain a passed element.
 🕯 HINT: Use the 'elem' function to check whether an element belongs to a list
 -}
 contains :: Int -> [[Int]] -> [[Int]]
-contains x lst = filter (elem x) lst
+contains x = filter (elem x)
 
 
 {- |
@@ -859,7 +857,10 @@ list.
 rotate :: Int -> [Int] -> [Int]
 rotate x lst
   | x < 0 || lst == [] = []
-  | otherwise = drop x (take (length lst + x) (cycle lst))
+  | otherwise = rotate_ (mod x (length lst)) lst
+    where
+      rotate_ :: Int -> [Int] -> [Int]
+      rotate_ x_ lst_ = drop x_ (take (length lst_ + x_) (cycle lst_))
 
 {- |
 =💣= Task 12*
@@ -876,8 +877,11 @@ and reverses it.
   cheating!
 -}
 rewind :: [a] -> [a]
-rewind [] = []
-rewind (x:xs) = rewind xs ++ [x]
+rewind = go []
+  where
+    go :: [a] -> [a] -> [a]
+    go new [] = new
+    go new (x:xs) = go (x : new) xs
 
 
 {-
