@@ -28,7 +28,7 @@ Specifically, in this chapter, you are going to practice:
 As usual, the explanations are in the Haskell comments of this module. We are
 leaving a number of tasks on our path. Your goal is to solve them all.
 
-After finishing the PR, you can choose to summon us, @vrom911 and @chshersh, to
+After finishing the PR, you can choose to summon me, @vrom911, to
 look at your solution in order to give some advice on your code. This is
 optional; however, you can ask us for review only if you want some feedback on
 your solutions.
@@ -371,6 +371,8 @@ after the fight. The battle has the following possible outcomes:
  ⊛ Monster defeats the knight. In that case return -1
  ⊛ Neither the knight nor the monster wins. On such an occasion, the knight
    doesn't earn any money and keeps what they had before.
+
+♫ NOTE: In this task, you need to implement only a single round of the fight.
 
 -}
 
@@ -1009,7 +1011,7 @@ contestants, and write a function that decides the outcome of a fight!
 
 {-
 You did it! Now it is time to open pull request with your changes
-and summon @vrom911 and @chshersh for the review!
+and summon @vrom911 for the review!
 -}
 
 {-
